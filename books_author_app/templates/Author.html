@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h3>Add a Author</h3>
+        <form action="add_author" method="POST">
+            {% csrf_token %}
+            <h3> First Name <input type="text" name="first_name" id = "first_name"></h3>
+            <h3>Last Name <input type="text" name="last_name" id="last_name"></h3>
+            <h3>Notes<input type="text" name="notes" id="notes"></h3>
+            <button>Add</button>
+        </form>
+    </div>
+
+    <div>
+        {% for author in authors_all %}
+        <h3>{{author.id}}</h3>
+        <h3>{{author.first_name}} {{author.last_name}}</h3>
+        <h3>{{author.notes}}</h3>
+        <a href="/show_author/{{author.id}}"> View</a>
+        {% endfor %}
+    </div>
+    
+</body>
+</html>
